@@ -1,4 +1,4 @@
-/* ---    main.c    ---
+/* ---    nt-application.h    ---
  *
  *  Copyright (C) 2020 Scott Roche
  * 
@@ -16,15 +16,21 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#ifndef __NTAPPLICATION_H
+#define __NTAPPLICATION_H
+
 #include <gtk/gtk.h>
 
-#include "nt-application.h"
-
-/**
- * 
- */
-int main (int    argc,
-          char **argv)
+struct _NtApplication
 {
-     return g_application_run (G_APPLICATION (nt_application_new ()), argc, argv);
-}
+     /*< private >*/
+     GtkApplication parent;
+
+};
+
+#define NT_APPLICATION_TYPE (nt_application_get_type ())
+G_DECLARE_FINAL_TYPE (NtApplication, nt_application, NT, APPLICATION, GtkApplication);
+
+NtApplication *     nt_application_new       (void);
+
+#endif /* __NTAPPLICATION_H */

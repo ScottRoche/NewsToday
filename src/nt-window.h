@@ -1,4 +1,4 @@
-/* ---    main.c    ---
+/* ---    nt-window.h    ---
  *
  *  Copyright (C) 2020 Scott Roche
  * 
@@ -16,15 +16,22 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#ifndef __NTWINDOW_H
+#define __NTWINDOW_H
+
 #include <gtk/gtk.h>
 
 #include "nt-application.h"
 
-/**
- * 
- */
-int main (int    argc,
-          char **argv)
+struct _NtWindow 
 {
-     return g_application_run (G_APPLICATION (nt_application_new ()), argc, argv);
-}
+     /*< private >*/
+     GtkApplicationWindow parent;
+};
+
+#define NT_WINDOW_TYPE (nt_window_get_type ())
+G_DECLARE_FINAL_TYPE (NtWindow, nt_window, NT, WINDOW, GtkApplicationWindow)
+
+NtWindow *     nt_window_new       (NtApplication *app);
+
+#endif /* __NTWINDOW_H */
