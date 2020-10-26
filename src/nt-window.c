@@ -21,13 +21,16 @@
 G_DEFINE_TYPE(NtWindow, nt_window, GTK_TYPE_APPLICATION_WINDOW);
 
 static void
-nt_window_init (NtWindow *app)
-{     
+nt_window_init (NtWindow *win)
+{
+     gtk_widget_init_template (GTK_WIDGET (win));
 }
 
 static void
 nt_window_class_init (NtWindowClass *class)
 {
+     gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+                                                  "/io/github/scottroche/newstoday/src/nt-window.ui");
 }
 
 NtWindow *

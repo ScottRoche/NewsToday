@@ -25,6 +25,13 @@ rule CUSTOM_COMMAND
  description = $DESC
  restat = 1
 
+rule CUSTOM_COMMAND_DEP
+ command = $COMMAND
+ deps = gcc
+ depfile = $DEPFILE_UNQUOTED
+ description = $DESC
+ restat = 1
+
 rule REGENERATE_BUILD
  command = /usr/bin/meson --internal regenerate /home/scottroche/Documents/NewsToday /home/scottroche/Documents/NewsToday/build --backend ninja
  description = Regenerating build files.
@@ -36,22 +43,37 @@ build PHONY: phony
 
 # Build rules for targets
 
-build newstoday.p/src_main.c.o: c_COMPILER ../src/main.c
+build nt-resources.c: CUSTOM_COMMAND_DEP ../src/nt.gresource.xml
+ DEPFILE = nt-resources.c.d
+ DEPFILE_UNQUOTED = nt-resources.c.d
+ COMMAND = glib-compile-resources ../src/nt.gresource.xml --sourcedir ../ --c-name nt --internal --generate --target nt-resources.c --dependency-file nt-resources.c.d
+ description = Generating$ nt-resources_c$ with$ a$ custom$ command
+
+build nt-resources.h: CUSTOM_COMMAND ../src/nt.gresource.xml
+ COMMAND = glib-compile-resources ../src/nt.gresource.xml --sourcedir ../ --c-name nt --internal --generate --target nt-resources.h
+ description = Generating$ nt-resources_h$ with$ a$ custom$ command
+
+build newstoday.p/meson-generated_.._nt-resources.c.o: c_COMPILER nt-resources.c || nt-resources.h
+ DEPFILE = newstoday.p/meson-generated_.._nt-resources.c.o.d
+ DEPFILE_UNQUOTED = newstoday.p/meson-generated_.._nt-resources.c.o.d
+ ARGS = -Inewstoday.p -I. -I.. -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+
+build newstoday.p/src_main.c.o: c_COMPILER ../src/main.c || nt-resources.h
  DEPFILE = newstoday.p/src_main.c.o.d
  DEPFILE_UNQUOTED = newstoday.p/src_main.c.o.d
  ARGS = -Inewstoday.p -I. -I.. -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
-build newstoday.p/src_nt-application.c.o: c_COMPILER ../src/nt-application.c
+build newstoday.p/src_nt-application.c.o: c_COMPILER ../src/nt-application.c || nt-resources.h
  DEPFILE = newstoday.p/src_nt-application.c.o.d
  DEPFILE_UNQUOTED = newstoday.p/src_nt-application.c.o.d
  ARGS = -Inewstoday.p -I. -I.. -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
-build newstoday.p/src_nt-window.c.o: c_COMPILER ../src/nt-window.c
+build newstoday.p/src_nt-window.c.o: c_COMPILER ../src/nt-window.c || nt-resources.h
  DEPFILE = newstoday.p/src_nt-window.c.o.d
  DEPFILE_UNQUOTED = newstoday.p/src_nt-window.c.o.d
  ARGS = -Inewstoday.p -I. -I.. -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
-build newstoday: c_LINKER newstoday.p/src_main.c.o newstoday.p/src_nt-application.c.o newstoday.p/src_nt-window.c.o | /usr/lib64/libgtk-3.so /usr/lib64/libgdk-3.so /usr/lib64/libpangocairo-1.0.so /usr/lib64/libpango-1.0.so /usr/lib64/libharfbuzz.so /usr/lib64/libatk-1.0.so /usr/lib64/libcairo-gobject.so /usr/lib64/libcairo.so /usr/lib64/libgdk_pixbuf-2.0.so /usr/lib64/libgio-2.0.so /usr/lib64/libgobject-2.0.so /usr/lib64/libglib-2.0.so
+build newstoday: c_LINKER newstoday.p/meson-generated_.._nt-resources.c.o newstoday.p/src_main.c.o newstoday.p/src_nt-application.c.o newstoday.p/src_nt-window.c.o | /usr/lib64/libgtk-3.so /usr/lib64/libgdk-3.so /usr/lib64/libpangocairo-1.0.so /usr/lib64/libpango-1.0.so /usr/lib64/libharfbuzz.so /usr/lib64/libatk-1.0.so /usr/lib64/libcairo-gobject.so /usr/lib64/libcairo.so /usr/lib64/libgdk_pixbuf-2.0.so /usr/lib64/libgio-2.0.so /usr/lib64/libgobject-2.0.so /usr/lib64/libglib-2.0.so
  LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,--start-group /usr/lib64/libgtk-3.so /usr/lib64/libgdk-3.so /usr/lib64/libpangocairo-1.0.so /usr/lib64/libpango-1.0.so /usr/lib64/libharfbuzz.so /usr/lib64/libatk-1.0.so /usr/lib64/libcairo-gobject.so /usr/lib64/libcairo.so /usr/lib64/libgdk_pixbuf-2.0.so /usr/lib64/libgio-2.0.so /usr/lib64/libgobject-2.0.so /usr/lib64/libglib-2.0.so -Wl,--end-group
 
 # Test rules
@@ -104,7 +126,13 @@ build all: phony newstoday
 
 build clean: phony meson-clean
 
-build meson-clean: CUSTOM_COMMAND PHONY
+build meson-clean-ctlist: CUSTOM_COMMAND PHONY
+ COMMAND = /usr/bin/meson --internal cleantrees /home/scottroche/Documents/NewsToday/build/meson-private/cleantrees.dat
+ description = Cleaning$ custom$ target$ directories
+
+build clean-ctlist: phony meson-clean-ctlist
+
+build meson-clean: CUSTOM_COMMAND PHONY | clean-ctlist
  COMMAND = /usr/bin/ninja -t clean
  description = Cleaning
 

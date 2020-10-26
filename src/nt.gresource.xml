@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+     <gresource prefix="/io/github/scottroche/newstoday">
+          <file preprocess="xml-stripblanks">src/nt-window.ui</file>
+     </gresource>
+</gresources>
