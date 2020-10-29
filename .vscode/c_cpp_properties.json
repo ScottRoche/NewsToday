@@ -22,7 +22,14 @@
                 "/usr/include/at-spi2-atk/2.0",
                 "/usr/include/dbus-1.0",
                 "/usr/lib64/dbus-1.0/include",
-                "/usr/include/at-spi-2.0"
+                "/usr/include/at-spi-2.0",
+                "/usr/include/libgrss",
+                "/usr/include/glib-2.0", 
+                "/usr/lib64/glib-2.0/include",
+                "/usr/include/libxml2",
+                "/usr/include/libsoup-2.4",
+                "/usr/include/libmount",
+                "/usr/include/blkid"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

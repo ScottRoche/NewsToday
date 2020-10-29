@@ -30,7 +30,7 @@ static void
 nt_window_class_init (NtWindowClass *class)
 {
      gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
-                                                  "/io/github/scottroche/newstoday/src/nt-window.ui");
+                                                  "/io/github/scottroche/newstoday/src/ui/nt-window.ui");
 }
 
 NtWindow *
