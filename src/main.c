@@ -26,5 +26,6 @@
 int main (int    argc,
           char **argv)
 {
-     return g_application_run (G_APPLICATION (nt_application_new ()), argc, argv);
+     g_autoptr (GApplication) app = G_APPLICATION (nt_application_new ());
+     return g_application_run (app, argc, argv);
 }

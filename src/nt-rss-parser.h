@@ -1,4 +1,4 @@
-/* ---    nt-window.c    ---
+/* ---    nt-rss-parser.h    ---
  *
  *  Copyright (C) 2020 Scott Roche
  * 
@@ -16,25 +16,14 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "nt-window.h"
+#ifndef __NTRSSPARSER_H
+#define __NTRSSPARSER_H
 
-G_DEFINE_TYPE(NtWindow, nt_window, GTK_TYPE_APPLICATION_WINDOW);
+#include <libgrss/libgrss.h>
 
-static void
-nt_window_init (NtWindow *win)
-{
-     gtk_widget_init_template (GTK_WIDGET (win));
-}
+GList *             nt_rss_feed_channels_create       (gchar *feeds[]);
+GrssFeedsPool *     nt_rss_feeds_pool_create          (GList *feed_channels);
+void                nt_rss_feed_channels_free         (GList *list);
+void                nt_rss_feeds_pool_free            (GrssFeedsPool *pool);
 
-static void
-nt_window_class_init (NtWindowClass *klass)
-{
-     gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
-                                                  "/io/github/scottroche/newstoday/src/ui/nt-window.ui");
-}
-
-NtWindow *
-nt_window_new (NtApplication *app)
-{
-     return g_object_new (NT_WINDOW_TYPE, "application", app, NULL);
-}
+#endif /* __NTRSSPARSER_H */

@@ -20,12 +20,19 @@
 #define __NTAPPLICATION_H
 
 #include <gtk/gtk.h>
+#include <libgrss/libgrss.h>
 
-struct _NtApplication
+struct _NtApplication 
 {
-     /*< private >*/
      GtkApplication parent;
+};
 
+typedef struct _NtApplicationPrivate NtApplicationPrivate;
+
+struct _NtApplicationPrivate 
+{
+     GList *channel_feeds;
+     GrssFeedsPool *feeds_pool;
 };
 
 #define NT_APPLICATION_TYPE (nt_application_get_type ())
