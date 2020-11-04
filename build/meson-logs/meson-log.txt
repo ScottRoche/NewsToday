@@ -1,4 +1,4 @@
-Build started at 2020-10-29T20:02:10.888029
+Build started at 2020-10-31T15:39:17.092533
 Main binary: /usr/bin/python3
 Build Options: -Dbackend=ninja
 Python system: Linux
@@ -24,29 +24,30 @@ Host machine cpu: x86_64
 Target machine cpu family: x86_64
 Target machine cpu: x86_64
 Dependency gtk+-3.0 found: YES 3.24.23 (cached)
-Pkg-config binary for MachineChoice.HOST is not cached.
+Dependency libgrss found: YES 0.7.0 (cached)
+Pkg-config binary for MachineChoice.BUILD is not cached.
 None of 'PKG_CONFIG' are defined in the environment, not changing global flags.
 Pkg-config binary missing from cross or native file, or env var undefined.
 Trying a default Pkg-config fallback at pkg-config
 Found pkg-config: /usr/bin/pkg-config (1.7.3)
-Determining dependency 'libgrss' with pkg-config executable '/usr/bin/pkg-config'
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion libgrss` -> 0
-0.7.0
+Called `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+2.66.2
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags libgrss` -> 0
--I/usr/include/libgrss -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/libxml2 -I/usr/include/libsoup-2.4 -pthread -I/usr/include/libmount -I/usr/include/blkid
+Called `/usr/bin/pkg-config --cflags glib-2.0` -> 0
+-I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config libgrss --libs` -> 0
--L/usr/lib64 -lgrss -lxml2 -lsoup-2.4 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
+-L/usr/lib64 -lglib-2.0
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config libgrss --libs` -> 0
--lgrss -lxml2 -lsoup-2.4 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
+-lglib-2.0
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmp3ib1wjgr
-Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmp3ib1wjgr/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmp3ib1wjgr/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpwzcsgujx
+Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpwzcsgujx/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpwzcsgujx/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -67,8 +68,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmp9xv65s1b
-Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmp9xv65s1b/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmp9xv65s1b/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpj2pg25kl
+Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpj2pg25kl/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpj2pg25kl/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -79,28 +80,21 @@ libraries: =/usr/lib/gcc/x86_64-redhat-linux/10/:/usr/lib/gcc/x86_64-redhat-linu
 
 Compiler stderr:
  
-Run-time dependency libgrss found: YES 0.7.0
-Pkg-config binary for MachineChoice.BUILD is not cached.
-None of 'PKG_CONFIG' are defined in the environment, not changing global flags.
-Pkg-config binary missing from cross or native file, or env var undefined.
-Trying a default Pkg-config fallback at pkg-config
-Found pkg-config: /usr/bin/pkg-config (1.7.3)
-Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion glib-2.0` -> 0
-2.66.2
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags glib-2.0` -> 0
--I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
--L/usr/lib64 -lglib-2.0
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
--lglib-2.0
-None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 Build targets in project: 3
 
 Found ninja-1.10.1 at /usr/bin/ninja
+Running compile:
+Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpyj9jfakx
+Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpyj9jfakx/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpyj9jfakx/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ install: /usr/lib/gcc/x86_64-redhat-linux/10/
+programs: =/usr/libexec/gcc/x86_64-redhat-linux/10/:/usr/libexec/gcc/x86_64-redhat-linux/10/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/10/:/usr/lib/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../../x86_64-redhat-linux/bin/x86_64-redhat-linux/10/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../../x86_64-redhat-linux/bin/
+libraries: =/usr/lib/gcc/x86_64-redhat-linux/10/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../../x86_64-redhat-linux/lib/x86_64-redhat-linux/10/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../../x86_64-redhat-linux/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../x86_64-redhat-linux/10/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../../lib64/:/lib/x86_64-redhat-linux/10/:/lib/../lib64/:/usr/lib/x86_64-redhat-linux/10/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../../x86_64-redhat-linux/lib/:/usr/lib/gcc/x86_64-redhat-linux/10/../../../:/lib/:/usr/lib/
+
+Compiler stderr:
+ 
 None of 'STRIP' are defined in the environment, not changing global flags.
 None of 'STRIP' are defined in the environment, not changing global flags.

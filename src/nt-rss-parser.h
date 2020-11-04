@@ -21,9 +21,13 @@
 
 #include <libgrss/libgrss.h>
 
+G_BEGIN_DECLS
+
 GList *             nt_rss_feed_channels_create       (gchar *feeds[]);
 GrssFeedsPool *     nt_rss_feeds_pool_create          (GList *feed_channels);
 void                nt_rss_feed_channels_free         (GList *list);
 void                nt_rss_feeds_pool_free            (GrssFeedsPool *pool);
+
+G_END_DECLS
 
 #endif /* __NTRSSPARSER_H */

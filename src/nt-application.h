@@ -22,6 +22,8 @@
 #include <gtk/gtk.h>
 #include <libgrss/libgrss.h>
 
+G_BEGIN_DECLS
+
 struct _NtApplication 
 {
      GtkApplication parent;
@@ -35,9 +37,11 @@ struct _NtApplicationPrivate
      GrssFeedsPool *feeds_pool;
 };
 
-#define NT_APPLICATION_TYPE (nt_application_get_type ())
-G_DECLARE_FINAL_TYPE (NtApplication, nt_application, NT, APPLICATION, GtkApplication);
+#define NT_TYPE_APPLICATION (nt_application_get_type ())
+G_DECLARE_FINAL_TYPE (NtApplication, nt_application, NT, APPLICATION, GtkApplication)
 
 NtApplication *     nt_application_new       (void);
+
+G_END_DECLS
 
 #endif /* __NTAPPLICATION_H */

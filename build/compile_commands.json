@@ -28,5 +28,11 @@
     "command": "cc -Inewstoday.p -I. -I.. -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -I/usr/include/libgrss -I/usr/include/libxml2 -I/usr/include/libsoup-2.4 -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ newstoday.p/src_nt-rss-parser.c.o -MF newstoday.p/src_nt-rss-parser.c.o.d -o newstoday.p/src_nt-rss-parser.c.o -c ../src/nt-rss-parser.c",
     "file": "../src/nt-rss-parser.c",
     "output": "newstoday.p/src_nt-rss-parser.c.o"
+  },
+  {
+    "directory": "/home/scottroche/Documents/NewsToday/build",
+    "command": "cc -Inewstoday.p -I. -I.. -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/gio-unix-2.0 -I/usr/include/atk-1.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/at-spi-2.0 -I/usr/include/libgrss -I/usr/include/libxml2 -I/usr/include/libsoup-2.4 -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ newstoday.p/src_nt-feed-element.c.o -MF newstoday.p/src_nt-feed-element.c.o.d -o newstoday.p/src_nt-feed-element.c.o -c ../src/nt-feed-element.c",
+    "file": "../src/nt-feed-element.c",
+    "output": "newstoday.p/src_nt-feed-element.c.o"
   }
 ]

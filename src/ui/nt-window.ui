@@ -5,5 +5,15 @@
           <property name="title" translatable="yes">News Today</property>
           <property name="default-width">600</property>
           <property name="default-height">400</property>
+          <child>
+               <object class="GtkScrolledWindow" id="scroll_feed">
+                    <property name="visible">True</property>
+                    <child>
+                         <object class="GtkListBox" id="news_feed">
+                              <property name="visible">True</property>
+                         </object>
+                    </child>
+               </object>
+          </child>
      </template>
 </interface>

@@ -58,8 +58,9 @@ nt_rss_feeds_pool_create (GList *feed_channels)
      /* Reverses the prepended list. */
      feed_channels = g_list_reverse (feed_channels);
 
-     /* Instantiates a new GrssFeedsPool which is set to 
-      * auto-fetche from the GrssFeedChannels.
+     /**
+      * Instantiates a new GrssFeedsPool which is set to 
+      * auto-fetches from the GrssFeedChannels.
       */
      pool = grss_feeds_pool_new ();
      grss_feeds_pool_listen (pool, feed_channels);

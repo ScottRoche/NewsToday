@@ -114,7 +114,7 @@ nt_application_class_init (NtApplicationClass *klass)
 NtApplication *
 nt_application_new (void)
 {
-     return g_object_new (NT_APPLICATION_TYPE,
+     return g_object_new (NT_TYPE_APPLICATION,
                           "application-id", "io.github.scottroche.newstoday",
                           "flags", G_APPLICATION_HANDLES_OPEN,
                           NULL);

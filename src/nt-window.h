@@ -23,15 +23,21 @@
 
 #include "nt-application.h"
 
+G_BEGIN_DECLS
+
 struct _NtWindow 
 {
      /*< private >*/
      GtkApplicationWindow parent;
+
+     GtkListBox *news_feed;
 };
 
-#define NT_WINDOW_TYPE (nt_window_get_type ())
+#define NT_TYPE_WINDOW (nt_window_get_type ())
 G_DECLARE_FINAL_TYPE (NtWindow, nt_window, NT, WINDOW, GtkApplicationWindow)
 
 NtWindow *     nt_window_new       (NtApplication *app);
+
+G_END_DECLS
 
 #endif /* __NTWINDOW_H */
