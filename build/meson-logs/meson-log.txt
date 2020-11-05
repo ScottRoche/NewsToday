@@ -1,4 +1,4 @@
-Build started at 2020-10-31T15:39:17.092533
+Build started at 2020-11-05T12:02:15.673154
 Main binary: /usr/bin/python3
 Build Options: -Dbackend=ninja
 Python system: Linux
@@ -46,8 +46,8 @@ Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpwzcsgujx
-Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpwzcsgujx/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpwzcsgujx/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpgptmorol
+Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpgptmorol/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpgptmorol/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -68,8 +68,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpj2pg25kl
-Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpj2pg25kl/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpj2pg25kl/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmp5lq3eaoh
+Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmp5lq3eaoh/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmp5lq3eaoh/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -84,8 +84,8 @@ Build targets in project: 3
 
 Found ninja-1.10.1 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpyj9jfakx
-Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpyj9jfakx/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpyj9jfakx/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/scottroche/Documents/NewsToday/build/meson-private/tmpn679mium
+Command line:  cc /home/scottroche/Documents/NewsToday/build/meson-private/tmpn679mium/testfile.c -o /home/scottroche/Documents/NewsToday/build/meson-private/tmpn679mium/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  

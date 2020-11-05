@@ -27,6 +27,13 @@ nt_application_init (NtApplication *self)
 {
 }
 
+/**
+ * nt_application_rss_setup:
+ * @self: A reference to the application being run.
+ * 
+ * Creates a list of RSS feed channels and a feed pool which
+ * will be used to fetch the RSS feeds themselves.
+ */
 static void
 nt_application_rss_setup (NtApplication *self)
 {

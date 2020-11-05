@@ -4,7 +4,7 @@ nt_src = ['src/main.c',
           'src/nt-application.c', 
           'src/nt-window.c', 
           'src/nt-rss-parser.c', 
-          'src/nt-feed-element.c'
+          'src/nt-feed-item.c'
          ]
 
 gtkdep = dependency('gtk+-3.0')

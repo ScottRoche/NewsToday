@@ -35,6 +35,7 @@ struct _NtApplicationPrivate
 {
      GList *channel_feeds;
      GrssFeedsPool *feeds_pool;
+     GListStore *rss_items;
 };
 
 #define NT_TYPE_APPLICATION (nt_application_get_type ())
