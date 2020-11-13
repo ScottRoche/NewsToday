@@ -20,11 +20,14 @@
 #include "nt-window.h"
 #include "nt-rss-parser.h"
 
-G_DEFINE_TYPE_WITH_PRIVATE(NtApplication, nt_application, GTK_TYPE_APPLICATION);
+G_DEFINE_TYPE_WITH_PRIVATE (NtApplication, nt_application, GTK_TYPE_APPLICATION);
 
 static void
 nt_application_init (NtApplication *self)
 {
+     NtApplicationPrivate *priv = nt_application_get_instance_private (self);
+
+     priv->rss_feed_items = g_list_store_new (GRSS_FEED_ITEM_TYPE);
 }
 
 /**
@@ -40,14 +43,13 @@ nt_application_rss_setup (NtApplication *self)
      NtApplicationPrivate *priv = nt_application_get_instance_private (NT_APPLICATION (self));
 
      // Change this to hold actual rss feeds.
-     gchar *feeds_list [] = {
+     gchar *feed_channels [] = {
           "http://0.0.0.0:8000/testy-testy.xml",
 		NULL
-
      };
 
-     priv->channel_feeds = nt_rss_feed_channels_create(feeds_list);
-     priv->feeds_pool = nt_rss_feeds_pool_create(priv->channel_feeds);
+     priv->rss_channel_feeds = nt_rss_feed_channels_create(feed_channels);
+     priv->rss_feeds_pool = nt_rss_feeds_pool_create(priv->rss_channel_feeds);
 }
 
 /**
@@ -59,10 +61,15 @@ nt_application_rss_setup (NtApplication *self)
  * Auto-fetches rss feeds from a GrssFeedsPool, printing the title of each item within the feed.
  */
 static void
-nt_application_rss_feed_fetch (GrssFeedsPool *pool, GrssFeedChannel *feed, GList *items)
+nt_application_rss_feed_fetch (GrssFeedsPool   *pool,
+                               GrssFeedChannel *feed,
+                               GList           *items, 
+                               gpointer         user_data)
 {
      GList *iter;
-     GrssFeedItem *item;
+     NtApplicationPrivate *priv = nt_application_get_instance_private ((NT_APPLICATION(user_data)));
+     
+     g_return_if_fail (priv);
 
      if (items == NULL) {
           printf ("Error while fetching %s\n", grss_feed_channel_get_title (feed));
@@ -72,27 +79,26 @@ nt_application_rss_feed_fetch (GrssFeedsPool *pool, GrssFeedChannel *feed, GList
      printf ("Fetched from %s\n", grss_feed_channel_get_title (feed));
 
      for (iter = items; iter; iter = g_list_next (iter)) {
-          item = (GrssFeedItem*) iter->data;
-          printf("\t\t%s\n", grss_feed_item_get_title (item));
+          g_list_store_append (priv->rss_feed_items, (GrssFeedItem*) iter->data);
+          printf ("Storing: %s\n", grss_feed_item_get_title (iter->data));
      }
-
-     printf ("\n\n");
 }
 
 static void
 nt_application_activate (GApplication *app)
 {
-     /* Launch a new window. */
-     NtApplicationPrivate *priv = nt_application_get_instance_private (NT_APPLICATION (app));
      NtWindow *win;
-
+     NtApplicationPrivate *priv = nt_application_get_instance_private (NT_APPLICATION (app));
+     
+     /* Launch a new window. */
      win = nt_window_new (NT_APPLICATION (app));
+     gtk_application_add_window (GTK_APPLICATION (app), GTK_WINDOW (win));
      gtk_window_present (GTK_WINDOW (win));
 
      nt_application_rss_setup (NT_APPLICATION (app));
-     g_signal_connect (priv->feeds_pool, 
+     g_signal_connect (priv->rss_feeds_pool, 
                        "feed-ready", G_CALLBACK (nt_application_rss_feed_fetch),
-                       NULL);
+                       NT_APPLICATION (app));
 }
 
 static void
@@ -101,8 +107,8 @@ nt_application_dispose (GObject* gobject)
      NtApplicationPrivate *priv = nt_application_get_instance_private (NT_APPLICATION (gobject));
 
      /* Frees the channel_feeds and pool references. */
-     nt_rss_feed_channels_free (priv->channel_feeds);
-     nt_rss_feeds_pool_free (priv->feeds_pool);
+     nt_rss_feed_channels_free (priv->rss_channel_feeds);
+     nt_rss_feeds_pool_free (priv->rss_feeds_pool);
      printf ("RSS feed channels and pool freed\n");
 
      G_OBJECT_CLASS (nt_application_parent_class)->dispose (gobject);
@@ -112,7 +118,6 @@ static void
 nt_application_class_init (NtApplicationClass *klass)
 {
      GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
      object_class->dispose = nt_application_dispose;
 
      G_APPLICATION_CLASS (klass)->activate = nt_application_activate;
@@ -125,4 +130,11 @@ nt_application_new (void)
                           "application-id", "io.github.scottroche.newstoday",
                           "flags", G_APPLICATION_HANDLES_OPEN,
                           NULL);
+}
+
+GListStore *
+nt_application_get_rss_feed_items (NtApplication *app)
+{
+     NtApplicationPrivate *priv = nt_application_get_instance_private (app);
+     return priv->rss_feed_items;
 }

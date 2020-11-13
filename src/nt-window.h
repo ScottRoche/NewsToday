@@ -33,6 +33,13 @@ struct _NtWindow
      GtkListBox *news_feed;
 };
 
+typedef struct _NtWindowPrivate NtWindowPrivate;
+
+struct _NtWindowPrivate
+{
+     GListStore *feed_items;
+};
+
 #define NT_TYPE_WINDOW (nt_window_get_type ())
 G_DECLARE_FINAL_TYPE (NtWindow, nt_window, NT, WINDOW, GtkApplicationWindow)
 

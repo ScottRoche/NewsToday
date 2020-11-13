@@ -27,7 +27,7 @@
  * Returns: A list which GrssFeedChannels are prepended to.
  */
 GList *
-nt_rss_feed_channels_create (gchar *feeds[])
+nt_rss_feed_channels_create (char *feeds[])
 {
      GList *list;
      GrssFeedChannel *feed;

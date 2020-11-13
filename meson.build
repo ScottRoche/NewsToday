@@ -3,8 +3,7 @@ project('newstoday', 'c')
 nt_src = ['src/main.c', 
           'src/nt-application.c', 
           'src/nt-window.c', 
-          'src/nt-rss-parser.c', 
-          'src/nt-feed-item.c'
+          'src/nt-rss-parser.c'
          ]
 
 gtkdep = dependency('gtk+-3.0')

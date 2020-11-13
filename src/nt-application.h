@@ -33,15 +33,16 @@ typedef struct _NtApplicationPrivate NtApplicationPrivate;
 
 struct _NtApplicationPrivate 
 {
-     GList *channel_feeds;
-     GrssFeedsPool *feeds_pool;
-     GListStore *rss_items;
+     GList *rss_channel_feeds;
+     GrssFeedsPool *rss_feeds_pool;
+     GListStore *rss_feed_items;
 };
 
 #define NT_TYPE_APPLICATION (nt_application_get_type ())
 G_DECLARE_FINAL_TYPE (NtApplication, nt_application, NT, APPLICATION, GtkApplication)
 
-NtApplication *     nt_application_new       (void);
+NtApplication *     nt_application_new                      (void);
+GListStore *        nt_application_get_rss_feed_items       (NtApplication *app);
 
 G_END_DECLS
 
