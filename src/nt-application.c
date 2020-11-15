@@ -45,6 +45,10 @@ nt_application_rss_setup (NtApplication *self)
      // Change this to hold actual rss feeds.
      gchar *feed_channels [] = {
           "http://0.0.0.0:8000/testy-testy.xml",
+          "http://rss.slashdot.org/Slashdot/slashdot",
+		"http://planet.gnome.org/atom.xml",
+		"http://news.gnome.org/atom.xml",
+		"http://lwn.net/headlines/rss",
 		NULL
      };
 

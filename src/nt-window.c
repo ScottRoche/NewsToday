@@ -45,12 +45,14 @@ nt_window_feed_row_create (gpointer item,
      gtk_grid_set_column_homogeneous (GTK_GRID (feed_row), TRUE);
 
      headline = gtk_label_new (grss_feed_item_get_title (feed_item));
-     gtk_label_set_xalign (GTK_LABEL (headline), 0.1);
+     gtk_widget_set_hexpand (headline, TRUE);
+     gtk_widget_set_halign (headline, GTK_ALIGN_START);
+     gtk_label_set_xalign (GTK_LABEL (headline), 0.5);
      gtk_label_set_line_wrap (GTK_LABEL (headline), TRUE);
      gtk_grid_attach (GTK_GRID (feed_row), headline, 0, 0, 1, 1);
      gtk_widget_show (headline);
 
-     // author = gtk_label_new (nt_feed_item_get_author (fitem));
+     // author = gtk_label_new (grss_person_get_name(grss_feed_item_get_author (feed_item)));
      // gtk_label_set_xalign (GTK_LABEL (author), 0.1);
      // gtk_grid_attach (GTK_GRID (feed_row), author, 0, 1, 1, 1);
      // gtk_widget_show (author);
